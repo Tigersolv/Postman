@@ -201,11 +201,10 @@ function testControllerLength(){
 
 
 */
-
-var testArray = function (parentName, arrayPropertyName, arrayLength){
+function testArray(parentName, arrayPropertyName, arrayLength){
     console.log("testArray('" + arrayPropertyName + "') is starting....");
 
-    pm.test(arrayPropertyName + " is property of Parent", function(){
+    pm.test(arrayPropertyName + " is property of jsonResponse", function(){
         pm.expect(jsonResponse).to.have.property(parentName);
     });
     var parent= jsonResponse[parentName];
@@ -228,7 +227,7 @@ var testArray = function (parentName, arrayPropertyName, arrayLength){
     console.log("testArray() has finished");
 }
 
-if(pm.environment.get("RequestRequestHeader")!="False"){
+if(pm.environment.get("RequireRequestHeader")!="False"){
     pm.test("RequestId header is present", function () {
         pm.response.to.have.header("RequestId");
     });
