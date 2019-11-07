@@ -203,17 +203,28 @@ function testControllerLength(){
 */
 
 
-function testArray(parent, arrayPropertyName, arrayLength){
+function testArray(parentName, arrayPropertyName, arrayLength){
     console.log("testArray('" + arrayPropertyName + "') is starting....");
-    pm.test(arrayPropertyName + " is property", function(){
-        pm.expect(jsonResponse).to.have.property(arrayPropertyName);
+
+    pm.test(arrayPropertyName + " is property of Parent", function(){
+        pm.expect(jsonResponse).to.have.property(parentName);
     });
+    var parent= jsonResponse[parentName];
+
+	
+    pm.test(arrayPropertyName + " is property of Parent", function(){
+        pm.expect(parent).to.have.property(parentName);
+    });
+    var arr = parent[arrayPropertyName];
+
     pm.test(arrayPropertyName + " IsArray", function(){
-        pm.expect(Array.isArray(jsonResponse[arrayPropertyName])).to.equal(true);
-    });
-    pm.test(arrayPropertyName + " Length", function(){
-        console.log("Array.length=" + jsonResponse[arrayPropertyName].length);
-        pm.expect(jsonResponse[arrayPropertyName].length).to.equal(arrayLength);
+        pm.expect(Array.isArray(arr)).to.equal(true);
+    });	
+    
+
+    pm.test(arrayPropertyName + ".length", function(){
+        console.log("Array.length=" + arr.length);
+        pm.expect(arr.length).to.equal(arrayLength);
     });
     console.log("testArray() has finished");
 }
