@@ -7,20 +7,6 @@ function testResponseLength() {
     console.log("testResponseLength - Completed");
 }
 
-function testArray(containerName, arrayName, arrayLength) {
-    console.log("testArray - Starting...");
-    pm.test("Testing Table arrary", function(){
-        var jsonResponse = pm.response.json();
-        var tables = jsonResponse[containerName][arrayName];
-        pm.expect(tables).to.be.an('array');
-        pm.expect(tables).to.have.lengthOf(arrayLength);
-    });
-    console.log("testArray - Completed");
-}
-
-
-
-
 function testResponseStatus() {
     console.log("testResponseStatus - Starting...");
     pm.test("Response Status", function() {
