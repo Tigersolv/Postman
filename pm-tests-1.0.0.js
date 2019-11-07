@@ -202,8 +202,7 @@ function testControllerLength(){
 
 */
 
-
-function testArray(parentName, arrayPropertyName, arrayLength){
+var testArray = function (parentName, arrayPropertyName, arrayLength){
     console.log("testArray('" + arrayPropertyName + "') is starting....");
 
     pm.test(arrayPropertyName + " is property of Parent", function(){
