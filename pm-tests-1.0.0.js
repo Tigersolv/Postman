@@ -1,5 +1,5 @@
 
-pm.environment.set("Url",buildUrl());
+
 function buildUrl(){
     var url = pm.environment.get("PROTOCOL") + '://' + pm.environment.get("IPADDRESS");
     if(pm.environment.get("PORT")!='443' && pm.environment.get("PORT")!='80')
@@ -9,7 +9,7 @@ function buildUrl(){
     url = url + '/api/' + pm.environment.get("ControllerName");
     return url;
 }
-
+pm.environment.set("Url",buildUrl());
 
 function testResponseLength() {
     console.log("testResponseLength - Starting...");
