@@ -1,3 +1,15 @@
+function buildUrl(method){
+    var url = pm.environment.get("PROTOCOL") + '://' + pm.environment.get("IPADDRESS");
+    if(pm.environment.get("PORT")!='443' && pm.environment.get("PORT")!='80')
+    {
+        url = url + ':' + pm.environment.get("PORT");
+    }
+    url = url + '/api/' + pm.environment.get("ControllerName");
+    url = url  + method;
+    return url;
+}
+
+
 function testResponseLength() {
     console.log("testResponseLength - Starting...");
     pm.test("Response length", function() {
