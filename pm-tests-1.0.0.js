@@ -1,5 +1,7 @@
 console.log("pm-tests starting....");
 
+
+// functions first...
 function testResponseLength() {
     console.log("testResponseLength - Starting...");
     pm.test("Response length", function() {
@@ -131,6 +133,8 @@ if(pm.environment.get("RequireRequestHeader")!="False"){
 }
 
 
+
+// now the stuff that gets directly executed:
 if(pm.environment.get("ExpectedResponseLength")>-1){
     console.log("getting response...");
     
